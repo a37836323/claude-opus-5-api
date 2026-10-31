@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>claude-opus-5 Returns 400 When You Turn Thinking Off? Fix effort xhigh/max, budget_tokens and between_tools</title>
+<meta name="description" content="On claude-opus-5, thinking is on by default and thinking type disabled is accepted only at effort high or below. Why disabled, budget_tokens, between_tools and sampling parameters return 400, how to fix each, and how to verify.">
+<meta name="keywords" content="Claude Opus 5 API, claude-opus-5, Claude API pricing, Anthropic API, AI model API, API token pricing, Claude model routing, OpenLux API">
+<link rel="canonical" href="https://claude-opus-5-api.pages.dev/claude-opus-5-thinking-disabled-400-fix/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="claude-opus-5 Returns 400 When You Turn Thinking Off? Fix effort xhigh/max, budget_tokens and between_tools">
+<meta property="og:description" content="On claude-opus-5, thinking is on by default and thinking type disabled is accepted only at effort high or below. Why disabled, budget_tokens, between_tools and sampling parameters return 400, how to fix each, and how to verify.">
+<meta property="og:url" content="https://api.openlux.ai/">
+<meta property="og:site_name" content="OpenLux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="claude-opus-5 Returns 400 When You Turn Thinking Off? Fix effort xhigh/max, budget_tokens and between_tools">
+<meta name="twitter:description" content="On claude-opus-5, thinking is on by default and thinking type disabled is accepted only at effort high or below. Why disabled, budget_tokens, between_tools and sampling parameters return 400, how to fix each, and how to verify.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://api.openlux.ai/#organization",
+      "name": "OpenLux",
+      "url": "https://api.openlux.ai",
+      "description": "Claude Opus 5 API pricing details for 2026: $5 input and $25 output per 1M tokens before the account-group multiplier.",
+      "sameAs": [
+        "https://openlux.ai",
+        "https://doc.openlux.ai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://claude-opus-5-api.pages.dev/#website",
+      "url": "https://claude-opus-5-api.pages.dev",
+      "name": "Claude Opus 5 API: Pricing and Model Details (2026)",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://claude-opus-5-api.pages.dev/claude-opus-5-thinking-disabled-400-fix/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OpenLux",
+          "item": "https://api.openlux.ai"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Claude Opus 5 API",
+          "item": "https://claude-opus-5-api.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "claude-opus-5 400 error after turning thinking off: what the API accepts and how to fix it",
+          "item": "https://claude-opus-5-api.pages.dev/claude-opus-5-thinking-disabled-400-fix/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://claude-opus-5-api.pages.dev/#application",
+      "name": "OpenLux API",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://api.openlux.ai",
+      "description": "Claude Opus 5 API pricing details for 2026: $5 input and $25 output per 1M tokens before the account-group multiplier.",
+      "offers": {
+        "@type": "Offer",
+        "price": "Not yet measured",
+        "priceCurrency": "CNY",
+        "url": "https://api.openlux.ai",
+        "description": "Usage is priced from the model's base token rates multiplied by the user's account-group multiplier; account funding and billing details are not provided in the supplied data."
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://claude-opus-5-api.pages.dev/claude-opus-5-thinking-disabled-400-fix/#article",
+      "headline": "claude-opus-5 400 error after turning thinking off: what the API accepts and how to fix it",
+      "datePublished": "2026-08-04",
+      "dateModified": "2026-10-30",
+      "inLanguage": "en-US",
+      "author": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "mainEntityOfPage": "https://claude-opus-5-api.pages.dev/claude-opus-5-thinking-disabled-400-fix/"
+    }
+  ]
+}
+</script>
+<style>*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#ffffff;color:#18181b;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility}
+.block-note93{max-width:900px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:1.85rem;line-height:1.4;margin:.2em 0 .6em;letter-spacing:-.01em}
+h2{font-size:1.3rem;margin:2.2em 0 .7em;padding-bottom:.35em;
+border-bottom:2px solid #f5d0fe}
+h3{font-size:1.08rem;margin:1.6em 0 .5em}
+a{color:#c026d3;text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+code{background:#fdf4ff;padding:.15em .4em;border-radius:6px;
+font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:#fdf4ff;border:1px solid #f5d0fe;border-radius:10px;
+padding:16px;overflow-x:auto;font-size:.86rem;line-height:1.6}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.94rem}
+th,td{border:1px solid #f5d0fe;padding:10px 12px;text-align:left}
+th{background:#fdf4ff;font-weight:600}
+ul,ol{padding-left:1.5em}
+ul{list-style-type:disc}
+li{margin:.4em 0}
+.zone-wrap48{background:#fdf4ff;border-left:3px solid #c026d3;
+border-radius:0 10px 10px 0;padding:14px 18px;margin:1.4em 0}
+.wrap-layer35{display:inline-block;background:#c026d3;color:#fff;
+padding:12px 26px;border-radius:10px;font-weight:600;margin:.6em 0}
+.wrap-layer35:hover{opacity:.88;text-decoration:none}
+.frame-body78{color:#71717a;font-size:.86rem;margin-top:3em;
+padding-top:1.2em;border-top:1px solid #f5d0fe}
+.pane-panel61{border:1px solid #f5d0fe;border-radius:10px;
+padding:2px 18px;margin:.8em 0}
+.slot-layer43{overflow-x:auto}
+@media(max-width:600px){
+  body{font-size:15px}
+  h1{font-size:1.5rem}
+  h2{font-size:1.18rem}
+  .block-note93{padding:20px 16px 48px}
+  table{font-size:.85rem}
+  th,td{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}</style>
+</head>
+<body>
+<main class="block-note93">
+<p data-notice="price-20261025" style="margin:0 0 16px;padding:10px 14px;border:1px solid #f0c36d;background:#fff8e6;color:#5c4400;border-radius:6px;font-size:14px;line-height:1.6">Prices and model details on this page may have changed. For current rates, see the <a href="https://www.openlux.ai/pricing?utm_source=claude-opus-5-api&amp;utm_medium=satellite&amp;utm_campaign=price_notice" style="color:#0b57d0">OpenLux pricing page</a>.</p>
+<p class="pane-block72"><a href="https://claude-opus-5-api.pages.dev/">Home</a> ／ claude-opus-5</p>
+<h1>claude-opus-5 400 error after turning thinking off: what the API accepts and how to fix it</h1>
+<p>If a claude-opus-5 request returns 400 after you add thinking: {&quot;type&quot;: &quot;disabled&quot;}, look at the effort level first. Anthropic&#x27;s thinking documentation says Claude Opus 5 has thinking on by default and accepts &quot;disabled&quot; only at effort high or below; combining it with effort xhigh or max returns a 400 error. The other common causes on this model are leftover extended thinking code (thinking type enabled with budget_tokens), the between_tools value that only Claude Sonnet 5.5 accepts, and sampling parameters such as temperature and top_p. This page lists what claude-opus-5 accepts, the fix for each 400, what changes when thinking stays off, and how to confirm the request works. Everything below comes from Anthropic&#x27;s official Claude API documentation for the Messages API format.</p>
+
+<section>
+<h2>Which thinking settings does claude-opus-5 accept?</h2>
+<p>Anthropic&#x27;s thinking documentation has a per-model table of what each thinking value does. For Claude Opus 5 it reads: no thinking field runs adaptive thinking; thinking type adaptive runs adaptive thinking; thinking type enabled with budget_tokens returns a 400 error; thinking type between_tools returns a 400 error; thinking type disabled turns thinking off at effort high or below.</p>
+<p>Effort is set separately, in output_config.effort, not inside the thinking object. According to the effort documentation, Claude Opus 5 supports all five levels: low, medium, high, xhigh and max. The model page lists high as the default effort on the Claude API, so a request that leaves out effort runs at high. The effort documentation also warns not to pass adaptive as an effort value, because adaptive is a thinking mode, not an effort level.</p>
+<p>Anthropic marks Claude Opus 5 as a legacy model (released July 24, 2026, retirement not sooner than July 24, 2027) and recommends Claude Opus 5.5 for new work. If you stay on claude-opus-5, the rules on this page apply. If you are moving to claude-opus-5-5, the rules are different: Opus 5.5 rejects thinking type disabled at every effort level, so check the migration guide instead.</p>
+<h2>thinking disabled with effort xhigh or max: why it returns 400 and how to fix it</h2>
+<p>The Claude Opus 5 launch note in Anthropic&#x27;s release notes calls this a breaking change from Claude Opus 4.8: on Opus 5, disabling thinking is allowed only at effort high or below, and thinking type disabled with effort xhigh or max returns a 400 error. The thinking documentation adds that this restriction is enforced on each request. Code that ran on claude-opus-4-8 with thinking disabled and a high effort level such as xhigh can therefore start failing as soon as the model name changes to claude-opus-5.</p>
+<p>The troubleshooting page gives two fixes. Option one: keep thinking type disabled and lower output_config.effort to high, medium or low. Option two: keep effort at xhigh or max and set thinking to {&quot;type&quot;: &quot;adaptive&quot;}, or simply remove the thinking field, because adaptive thinking is the default on this model.</p>
+<p>Anthropic&#x27;s documentation does not quote the exact error message for this combination on Claude Opus 5, so identify it by the request itself: model claude-opus-5, thinking type disabled, and output_config.effort set to xhigh or max. If all three are present, this is the cause.</p>
+<p>If you keep xhigh or max with thinking on, the effort documentation recommends a large max_tokens so the model has room to think and act across tool calls; it suggests starting at 64k tokens and tuning from there.</p>
+<h2>thinking.type.enabled and between_tools are not supported for this model</h2>
+<p>Code written for older Claude models often sends thinking type enabled with budget_tokens. The troubleshooting page says Claude 4.7 and later models do not support extended thinking and reject it with a 400 error whose message reads: &quot;thinking.type.enabled&quot; is not supported for this model. Use &quot;thinking.type.adaptive&quot; and &quot;output_config.effort&quot; to control thinking behavior. Claude Opus 5 is in that group. The fix is to switch to thinking type adaptive (or omit thinking) and control depth with output_config.effort instead of budget_tokens.</p>
+<p>The between_tools value is the Claude Sonnet 5.5 setting for turning off up-front thinking. The troubleshooting page says only Claude Sonnet 5.5 accepts it; other models return a 400 error with the message &quot;thinking.type.between_tools&quot; is not supported for this model. On claude-opus-5, use thinking type disabled at effort high or below if you want thinking off, or omit thinking.</p>
+<p>If you call Anthropic directly, the Models API reports capabilities.thinking.types.disabled.supported for each model. The models overview notes that even when supported is true, the API can still reject a disabled request for another reason, such as an effort level the model does not allow with thinking off. For claude-opus-5, that is exactly the xhigh and max case, so a true value does not mean every combination is allowed.</p>
+<h2>400 errors that look like thinking errors: temperature, top_p, top_k and prefill</h2>
+<p>Not every 400 near a thinking change is about thinking. The thinking documentation says that on Claude Opus 5 (and the other recent models it lists), non-default temperature, top_p or top_k values return a 400 error on every request, whether or not thinking is used. The default top_p on these models is 0.99, so top_p 1 returns a 400, and so does a request that includes both temperature and top_p even at their defaults. Starting with API version 2026-10-21, a request that includes temperature, top_p or top_k at any value returns a 400 on every model. The fix is to remove these parameters from the request and from any client or framework settings that add them.</p>
+<p>Prefill is another one: the same page says Claude 4.6 and later models reject a prefilled final assistant turn with a 400 error, whether or not thinking is on. Remove the trailing assistant message and put the format instruction in the prompt instead.</p>
+<p>Forced tool use is different on Opus 5 than on Opus 5.5. The documentation lists Claude Opus 5.5, Claude Sonnet 5.5, Claude Fable 5.1 and Claude Mythos 5.1 as the models that reject tool_choice any or tool on every request. Claude Opus 5 is not on that list, and forced tool use works with adaptive thinking, so the documentation does not list tool_choice any or tool as a cause of a claude-opus-5 400.</p>
+<h2>If you keep thinking off: tool calls in text and leaked XML tags</h2>
+<p>Anthropic&#x27;s Prompting Claude Opus 5 guide describes two artifacts that can occasionally appear when thinking is disabled. First, the model may write a tool call into its visible text instead of returning a tool_use block; the call never runs, and in agent loops the leaked text stays in the history and affects later turns. This is most common on tool-heavy workloads such as search. Second, the model may emit thinking tags or other internal XML tags in its response.</p>
+<p>The guide&#x27;s primary recommendation is to keep thinking enabled and control cost with a lower effort level: for most tasks, thinking enabled at low effort performs better than thinking disabled at similar cost. It also says to remove system prompt rules that tell the model not to think or not to reason, because those rules increase tag leakage.</p>
+<p>If your integration must keep thinking disabled, the guide gives one combined instruction to add to the system prompt: When you use a tool, you may say a brief sentence first. If no tool can express what the user asked for, say so instead of guessing. Do not include internal or system XML tags in your response. The guide notes that naming thinking tags specifically is less effective than this general wording.</p>
+<h2>Reply cut off or cache hits dropped after changing thinking settings</h2>
+<p>If the response ends with stop_reason max_tokens and a short or missing text block, the troubleshooting page explains that thinking tokens count toward max_tokens, so a long thinking pass can use up the budget before the text is finished. Raise max_tokens, or lower effort so less is spent on thinking. Keep this in mind when you move from thinking disabled to adaptive thinking at xhigh or max, where the effort documentation suggests starting max_tokens at 64k.</p>
+<p>If cache_read_input_tokens drops to zero after the change, the troubleshooting page explains why: the thinking configuration and the effort level are part of the cached prompt prefix, so switching thinking modes or changing effort starts a new prefix. Keep both constant across requests in the same conversation. The documentation notes that setting a parameter explicitly to its default is the same as omitting it and does not invalidate the cache.</p>
+<h2>How to verify the fix through an Anthropic-compatible relay</h2>
+<p>Step 1, check the connection. For the Anthropic Messages format on OpenLux, the base URL is https://api.openlux.ai without /v1, and your client appends /v1/messages. The key goes in x-api-key or Authorization: Bearer. Create the key on the Tokens page of the OpenLux console. A GET to https://api.openlux.ai/v1/models with the header Authorization: Bearer and your key that lists models confirms the key and address are right. A 401 Invalid token means the key is wrong or missing; a 404 Invalid URL (POST /v1/v1/messages) means the base URL has an extra /v1.</p>
+<p>Step 2, test thinking off. Send a minimal Messages request with model claude-opus-5, a max_tokens value, thinking {&quot;type&quot;: &quot;disabled&quot;} and output_config {&quot;effort&quot;: &quot;high&quot;}, with no temperature, top_p, top_k or prefill. Success means an HTTP 200 response with a text content block instead of a 400.</p>
+<p>Step 3, test high effort. Send the same request with effort xhigh and no thinking field (or thinking type adaptive), and a larger max_tokens. This should also return 200. If you change only the thinking field back to disabled while keeping xhigh, the 400 should come back, which confirms the effort rule was the cause.</p>
+<p>If a request that matches the rules above still returns 400 through a relay, compare the request body your code actually sends with the documented fields, then send the error message and request id to the service provider. Prices are listed on the official pricing page; check it before running long xhigh or max workloads.</p>
+<p>Still stuck? Full documentation and support are at <a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="docs">learn more</a>.</p>
+</section>
+<section>
+<h2>More on this site</h2>
+<ul class="wrap-box45">
+<li><a href="https://claude-opus-5-api.pages.dev/quickstart/">How do you call the claude-opus-5 API?</a><span>Setup steps and copy-pasteable code</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/compare/">claude-opus-5: direct API or gateway?</a><span>Point-by-point, including the limitations</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/faq/">claude-opus-5 API — frequently asked questions</a><span>What people actually ask when integrating</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-api-buy/">Where to Purchase Claude Opus 5 API Access and What It Costs</a><span>Purchase and billing details</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-payment-methods/">Can You Pay for Claude Opus 5 API Without an International Card?</a><span>Payment options and funding status</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/api-relay-station-explained/">API Relay Stations: What They Do Between Your App and claude-opus-5</a><span>How API relays work</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-code-relay-setup/">How to verify a Claude Code relay setup for claude-opus-5</a><span>Claude Code relay setup</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/opus-5-cost-comparison/">What Does claude-opus-5 Cost Compared With Nearby Models in 2026?</a><span>Opus 5 cost breakdown</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-api-ban-risk/">Does Using claude-opus-5 Through an API or Relay Risk an Account Ban?</a><span>Ban risk and relay safety</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-free-trial/">Can You Try the Claude Opus 5 API for Free?</a><span>Claude Opus 5 free trial facts</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/organization-disabled-error/">How to investigate &quot;api error 400 this organization has been disabled&quot;</a><span>Disabled organization error guide</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-5-to-5-5-400-error-fix/">Switched claude-opus-5 to claude-opus-5-5 and got a 400? Check thinking, tool_choice and computer use first</a><span>Opus 5 to 5.5 400 errors</span></li>
+</ul>
+</section>
+<section>
+<h2>Get started</h2>
+<p>Check the live pricing response and validate `claude-opus-5` in your environment</p>
+<p><a class="wrap-layer35" href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="register-bottom">Get a free API key</a></p>
+<p>Official site: <a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">see the docs</a></p>
+</section>
+<p class="frame-body78">Last updated 2026-10-30　|　Written and maintained by OpenLux.<br>Latency and pricing figures come from our own measurements. Where they differ from the vendor's site, the vendor's live page wins.</p>
+</main>
+<script>
+(function(){
+  try{
+    var EP='https://tk.openlux.ai/collect',S='claude-opus-5-api',L='en-US',V=1;
+    var sid=Math.random().toString(36).slice(2)+Date.now().toString(36);
+    function send(type,extra){
+      try{
+        var p={v:V,t:type,s:S,l:L,sid:sid,
+               r:document.referrer||'',
+               p:location.pathname||'/',
+               q:location.search||'',
+               sw:screen.width||0,
+               tz:(Intl.DateTimeFormat().resolvedOptions()||{}).timeZone||''};
+        for(var k in extra){p[k]=extra[k];}
+        var body=JSON.stringify(p);
+        if(navigator.sendBeacon){
+          navigator.sendBeacon(EP,new Blob([body],{type:'text/plain;charset=UTF-8'}));
+        }else{
+          fetch(EP,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
+        }
+      }catch(e){}
+    }
+    if(document.visibilityState==='prerender'){
+      document.addEventListener('visibilitychange',function h(){
+        if(document.visibilityState!=='prerender'){
+          document.removeEventListener('visibilitychange',h);send('view');
+        }
+      });
+    }else{
+      send('view');
+    }
+    document.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a[data-cta]'):null;
+      if(!a)return;
+      send('click',{c:a.getAttribute('data-cta')||'',h:a.href||''});
+    },{capture:true,passive:true});
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
