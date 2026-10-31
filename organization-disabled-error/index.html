@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>&quot;this organization has been disabled&quot;: Fixes for 2026</title>
+<meta name="description" content="This error points to an organization-level block, not a routine retry. Learn how to preserve evidence, rule out local configuration issues, and switch paths after confirmation.">
+<meta name="keywords" content="Claude Opus 5 API, claude-opus-5, Claude API pricing, Anthropic API, AI model API, API token pricing, Claude model routing, OpenLux API">
+<link rel="canonical" href="https://claude-opus-5-api.pages.dev/organization-disabled-error/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="&quot;this organization has been disabled&quot;: Fixes for 2026">
+<meta property="og:description" content="This error points to an organization-level block, not a routine retry. Learn how to preserve evidence, rule out local configuration issues, and switch paths after confirmation.">
+<meta property="og:url" content="https://api.openlux.ai/">
+<meta property="og:site_name" content="OpenLux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="&quot;this organization has been disabled&quot;: Fixes for 2026">
+<meta name="twitter:description" content="This error points to an organization-level block, not a routine retry. Learn how to preserve evidence, rule out local configuration issues, and switch paths after confirmation.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://api.openlux.ai/#organization",
+      "name": "OpenLux",
+      "url": "https://api.openlux.ai",
+      "description": "Claude Opus 5 API pricing details for 2026: $5 input and $25 output per 1M tokens before the account-group multiplier.",
+      "sameAs": [
+        "https://openlux.ai",
+        "https://doc.openlux.ai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://claude-opus-5-api.pages.dev/#website",
+      "url": "https://claude-opus-5-api.pages.dev",
+      "name": "Claude Opus 5 API: Pricing and Model Details (2026)",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://claude-opus-5-api.pages.dev/organization-disabled-error/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OpenLux",
+          "item": "https://api.openlux.ai"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Claude Opus 5 API",
+          "item": "https://claude-opus-5-api.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to investigate \"api error 400 this organization has been disabled\"",
+          "item": "https://claude-opus-5-api.pages.dev/organization-disabled-error/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://claude-opus-5-api.pages.dev/#application",
+      "name": "OpenLux API",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://api.openlux.ai",
+      "description": "Claude Opus 5 API pricing details for 2026: $5 input and $25 output per 1M tokens before the account-group multiplier.",
+      "offers": {
+        "@type": "Offer",
+        "price": "Not yet measured",
+        "priceCurrency": "CNY",
+        "url": "https://api.openlux.ai",
+        "description": "Usage is priced from the model's base token rates multiplied by the user's account-group multiplier; account funding and billing details are not provided in the supplied data."
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://claude-opus-5-api.pages.dev/organization-disabled-error/#article",
+      "headline": "How to investigate \"api error 400 this organization has been disabled\"",
+      "datePublished": "2026-08-04",
+      "dateModified": "2026-10-30",
+      "inLanguage": "en-US",
+      "author": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "mainEntityOfPage": "https://claude-opus-5-api.pages.dev/organization-disabled-error/"
+    }
+  ]
+}
+</script>
+<style>*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#ffffff;color:#18181b;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility}
+.block-note93{max-width:900px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:1.85rem;line-height:1.4;margin:.2em 0 .6em;letter-spacing:-.01em}
+h2{font-size:1.3rem;margin:2.2em 0 .7em;padding-bottom:.35em;
+border-bottom:2px solid #f5d0fe}
+h3{font-size:1.08rem;margin:1.6em 0 .5em}
+a{color:#c026d3;text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+code{background:#fdf4ff;padding:.15em .4em;border-radius:6px;
+font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:#fdf4ff;border:1px solid #f5d0fe;border-radius:10px;
+padding:16px;overflow-x:auto;font-size:.86rem;line-height:1.6}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.94rem}
+th,td{border:1px solid #f5d0fe;padding:10px 12px;text-align:left}
+th{background:#fdf4ff;font-weight:600}
+ul,ol{padding-left:1.5em}
+ul{list-style-type:disc}
+li{margin:.4em 0}
+.zone-wrap48{background:#fdf4ff;border-left:3px solid #c026d3;
+border-radius:0 10px 10px 0;padding:14px 18px;margin:1.4em 0}
+.wrap-layer35{display:inline-block;background:#c026d3;color:#fff;
+padding:12px 26px;border-radius:10px;font-weight:600;margin:.6em 0}
+.wrap-layer35:hover{opacity:.88;text-decoration:none}
+.frame-body78{color:#71717a;font-size:.86rem;margin-top:3em;
+padding-top:1.2em;border-top:1px solid #f5d0fe}
+.pane-panel61{border:1px solid #f5d0fe;border-radius:10px;
+padding:2px 18px;margin:.8em 0}
+.slot-layer43{overflow-x:auto}
+@media(max-width:600px){
+  body{font-size:15px}
+  h1{font-size:1.5rem}
+  h2{font-size:1.18rem}
+  .block-note93{padding:20px 16px 48px}
+  table{font-size:.85rem}
+  th,td{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}</style>
+</head>
+<body>
+<main class="block-note93">
+<p data-notice="price-20261025" style="margin:0 0 16px;padding:10px 14px;border:1px solid #f0c36d;background:#fff8e6;color:#5c4400;border-radius:6px;font-size:14px;line-height:1.6">Prices and model details on this page may have changed. For current rates, see the <a href="https://www.openlux.ai/pricing?utm_source=claude-opus-5-api&amp;utm_medium=satellite&amp;utm_campaign=price_notice" style="color:#0b57d0">OpenLux pricing page</a>.</p>
+<p class="pane-block72"><a href="https://claude-opus-5-api.pages.dev/">Home</a> ／ claude-opus-5</p>
+<h1>How to investigate &quot;api error 400 this organization has been disabled&quot;</h1>
+<p>If you see &quot;api error 400 this organization has been disabled,&quot; treat it as an organization-state incident first. Retrying, rotating request payloads, or waiting for a 429 reset is unlikely to answer the core question: which organization accepted the request, and is that organization disabled upstream?</p>
+
+<section>
+<h2>Where does &quot;api error 400 this organization has been disabled&quot; appear?</h2>
+<p>The exact string to investigate is &quot;api error 400 this organization has been disabled.&quot; It can surface in an API client, application logs, or a coding tool that sends requests on your behalf. The useful evidence is not just the visible message: preserve the timestamp, HTTP status, response body, request destination, selected model, and the configuration profile active at the time.</p>
+<p>A generic message such as &quot;cline报错api error&quot; is not enough to classify the failure. Cline may display an error returned by the API path it is configured to use, but the display text alone does not identify the failing account, organization, endpoint, or credential. Start by locating the original response before changing settings.</p>
+<p>From the project directory that produced the error, search saved logs and local output without copying secrets into a ticket: grep -RIn --exclude-dir=node_modules --exclude-dir=.git &#x27;organization has been disabled\|api error 400&#x27; . 2&gt;/dev/null. If this returns nothing, repeat the failing action once while recording the time and then inspect the tool&#x27;s own diagnostic output.</p>
+<h2>Does this error mean a bad request, a quota problem, or a disabled organization?</h2>
+<p>The wording identifies an organization-level disabled state in the responding system. That differs from a request-level validation failure, where changing a malformed field could resolve the request, and from an ordinary rate-limit response, where the request may be accepted later. The visible 400 status does not make this a normal payload-format issue when the response explicitly says the organization is disabled.</p>
+<p>It does not, by itself, prove why the organization was disabled, who controls it, or whether every credential you own is affected. It also does not establish that Cline itself caused the condition. A relay, proxy, provider account, workspace selection, or stale configuration can change which organization receives the request.</p>
+<p>Classify the incident with two controlled checks. First, send the same request through the same configured path and save the response. Second, compare the configured destination and organization context against a known intended setup. If the same disabled-organization response remains after those checks, stop treating it as a prompt or model-selection problem.</p>
+<h2>How do I rule out a stale endpoint or wrong credential before escalating?</h2>
+<p>Check the active configuration before asking for a replacement key or editing the request body. The highest-priority local failure is often that a tool is still reading an older profile, environment variable, workspace setting, or endpoint. Search configuration files for the fields that commonly select a destination, credential, or model: grep -RIn --exclude-dir=node_modules --exclude-dir=.git -E &#x27;baseURL|baseUrl|apiKey|model|endpoint&#x27; . 2&gt;/dev/null.</p>
+<p>Do not paste the output of that command into chat or issue trackers because it may contain credentials. Instead, compare only the destination hostname, active profile name, and model value with your intended configuration. Confirm that the selected model is spelled exactly as `claude-opus-5`; a model-name mismatch is a separate issue and should not be conflated with an organization-disabled response.</p>
+<p>For an application you control, capture status and response separately using the exact request format already used by that application. A generic diagnostic shell pattern is: curl -sS -D response-headers.txt -o response-body.txt -w &#x27;%{http_code}\n&#x27; -X POST &quot;$API_URL&quot; -H &quot;$AUTH_HEADER&quot; -H &#x27;Content-Type: application/json&#x27; --data @request.json. Replace the variables only with values from your existing integration, and keep `request.json` free of user-sensitive content where possible.</p>
+<h2>What should I send to support when the organization is actually disabled?</h2>
+<p>Once the original response is reproducible and the destination is confirmed, escalate it as an organization-side incident. Include the exact error text, UTC timestamp, HTTP status, request destination hostname, the model identifier `claude-opus-5` if that was selected, and a request or correlation ID if the response includes one. Redact API keys, Authorization headers, cookies, and user content.</p>
+<p>Ask a narrow question: which organization handled this request, whether it is disabled, and what action is required to restore or replace access. This is more actionable than reporting only that a tool says &quot;api error.&quot; It also avoids losing time on changes that cannot alter an upstream organization state.</p>
+<p>Do not repeatedly generate credentials, create duplicate configurations, or run high-volume retries while waiting for a diagnosis. Those actions can make the timeline harder to audit and can leave multiple clients pointing at different paths. Keep one minimal reproduction and one record of the original configuration state.</p>
+<h2>What is the fallback after an account-side block is confirmed?</h2>
+<p>After confirmation that the blocked organization cannot serve the workload, move the workload to an independently configured path rather than continuing to retry the disabled one. This service lists `claude-opus-5` as an available model, so it can be evaluated as a separate path for requests that need that model identifier. Availability in a catalog is not proof that it matches your existing tool configuration or resolves every upstream restriction.</p>
+<p>Keep the fallback isolated during validation. Use a separate configuration profile, a small non-sensitive test request, and a clearly recorded destination. Verify the returned status and response body before migrating an application workflow. Do not assume that a credential from the disabled path is valid on the alternative path, and do not reuse it unless the relevant system explicitly supports that.</p>
+<p>This page intentionally does not cover purchasing, payment, model pricing, or full client setup. Those are separate decisions from identifying a disabled organization. The immediate goal is to restore a controlled request path while retaining enough evidence to resolve the original incident.</p>
+<h2>How can I avoid losing time to this error again?</h2>
+<p>The practical prevention is observability and separation of configuration, not guessing at the cause of a disablement. Log the response status, response body, destination hostname, active profile, model identifier, and a redacted request ID for every failed call. Store credentials outside source-controlled project files, and make it obvious which profile a local tool is using.</p>
+<p>Add a lightweight preflight check to deployment and workstation setup that sends a permitted minimal request through the intended path and records only the result metadata. The expected latency, availability, and rate-limit behavior are Not yet measured here, so define your own operational thresholds from observed results rather than relying on assumptions.</p>
+<p>Finally, distinguish incident classes in runbooks. Route &quot;organization has been disabled&quot; to account or organization ownership checks; route validation errors to request inspection; and route rate-limit responses to workload pacing and quota investigation. That separation prevents a Cline-visible API error from becoming an unfocused, repeated configuration exercise.</p>
+<p>Still stuck? Full documentation and support are at <a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="docs">learn more</a>.</p>
+</section>
+<section>
+<h2>More on this site</h2>
+<ul class="wrap-box45">
+<li><a href="https://claude-opus-5-api.pages.dev/quickstart/">How do you call the claude-opus-5 API?</a><span>Setup steps and copy-pasteable code</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/compare/">claude-opus-5: direct API or gateway?</a><span>Point-by-point, including the limitations</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/faq/">claude-opus-5 API — frequently asked questions</a><span>What people actually ask when integrating</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-api-buy/">Where to Purchase Claude Opus 5 API Access and What It Costs</a><span>Purchase and billing details</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-payment-methods/">Can You Pay for Claude Opus 5 API Without an International Card?</a><span>Payment options and funding status</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/api-relay-station-explained/">API Relay Stations: What They Do Between Your App and claude-opus-5</a><span>How API relays work</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-code-relay-setup/">How to verify a Claude Code relay setup for claude-opus-5</a><span>Claude Code relay setup</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/opus-5-cost-comparison/">What Does claude-opus-5 Cost Compared With Nearby Models in 2026?</a><span>Opus 5 cost breakdown</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-api-ban-risk/">Does Using claude-opus-5 Through an API or Relay Risk an Account Ban?</a><span>Ban risk and relay safety</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-free-trial/">Can You Try the Claude Opus 5 API for Free?</a><span>Claude Opus 5 free trial facts</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-5-to-5-5-400-error-fix/">Switched claude-opus-5 to claude-opus-5-5 and got a 400? Check thinking, tool_choice and computer use first</a><span>Opus 5 to 5.5 400 errors</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-5-thinking-disabled-400-fix/">claude-opus-5 400 error after turning thinking off: what the API accepts and how to fix it</a><span>Opus 5 thinking-off 400 fix</span></li>
+</ul>
+</section>
+<section>
+<h2>Get started</h2>
+<p>Check the live pricing response and validate `claude-opus-5` in your environment</p>
+<p><a class="wrap-layer35" href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="register-bottom">Get a free API key</a></p>
+<p>Official site: <a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">see the docs</a></p>
+</section>
+<p class="frame-body78">Last updated 2026-10-30　|　Written and maintained by OpenLux.<br>Latency and pricing figures come from our own measurements. Where they differ from the vendor's site, the vendor's live page wins.</p>
+</main>
+<script>
+(function(){
+  try{
+    var EP='https://tk.openlux.ai/collect',S='claude-opus-5-api',L='en-US',V=1;
+    var sid=Math.random().toString(36).slice(2)+Date.now().toString(36);
+    function send(type,extra){
+      try{
+        var p={v:V,t:type,s:S,l:L,sid:sid,
+               r:document.referrer||'',
+               p:location.pathname||'/',
+               q:location.search||'',
+               sw:screen.width||0,
+               tz:(Intl.DateTimeFormat().resolvedOptions()||{}).timeZone||''};
+        for(var k in extra){p[k]=extra[k];}
+        var body=JSON.stringify(p);
+        if(navigator.sendBeacon){
+          navigator.sendBeacon(EP,new Blob([body],{type:'text/plain;charset=UTF-8'}));
+        }else{
+          fetch(EP,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
+        }
+      }catch(e){}
+    }
+    if(document.visibilityState==='prerender'){
+      document.addEventListener('visibilitychange',function h(){
+        if(document.visibilityState!=='prerender'){
+          document.removeEventListener('visibilitychange',h);send('view');
+        }
+      });
+    }else{
+      send('view');
+    }
+    document.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a[data-cta]'):null;
+      if(!a)return;
+      send('click',{c:a.getAttribute('data-cta')||'',h:a.href||''});
+    },{capture:true,passive:true});
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
