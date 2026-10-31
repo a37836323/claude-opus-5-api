@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>claude-opus-5 API 怎么调用：接入步骤与代码示例（2026）</title>
+<meta name="description" content="claude-opus-5 的接入步骤与可直接复制的代码示例。">
+<meta name="keywords" content="claude-opus-5 API 中转站,claude-opus-5 API,Claude Opus 5,Anthropic API 中转,claude opus 5 价格,大模型 API,模型聚合 API,Agent API">
+<link rel="canonical" href="https://a37836323.github.io/claude-opus-5-api/quickstart/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="claude-opus-5 API 怎么调用：接入步骤与代码示例（2026）">
+<meta property="og:description" content="claude-opus-5 的接入步骤与可直接复制的代码示例。">
+<meta property="og:url" content="https://api.openlux.ai/">
+<meta property="og:site_name" content="OpenLux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="claude-opus-5 API 怎么调用：接入步骤与代码示例（2026）">
+<meta name="twitter:description" content="claude-opus-5 的接入步骤与可直接复制的代码示例。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://api.openlux.ai/#organization",
+      "name": "OpenLux",
+      "url": "https://api.openlux.ai",
+      "description": "了解 claude-opus-5 API 中转站的基准价格、分组倍率与接入前需确认的信息。输入基准价为 $5/100 万 token，输出基准价为 $25/100 万 token。",
+      "sameAs": [
+        "https://openlux.ai",
+        "https://doc.openlux.ai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://a37836323.github.io/claude-opus-5-api/#website",
+      "url": "https://a37836323.github.io/claude-opus-5-api",
+      "name": "claude-opus-5 API 中转站：价格与接入说明（2026）",
+      "inLanguage": "zh-CN",
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://a37836323.github.io/claude-opus-5-api/quickstart/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OpenLux",
+          "item": "https://api.openlux.ai"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "claude-opus-5 API 中转站",
+          "item": "https://a37836323.github.io/claude-opus-5-api/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "claude-opus-5 API 在国内怎么接入？",
+          "item": "https://a37836323.github.io/claude-opus-5-api/quickstart/"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://a37836323.github.io/claude-opus-5-api/#howto",
+      "name": "如何接入 claude-opus-5 API",
+      "totalTime": "PT5M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "确认账户分组",
+          "text": "先在面板确认账户所在分组及其倍率。claude-opus-5 的最终单价不是固定展示价，而是基准价乘以分组倍率。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "核对实时定价",
+          "text": "在充值或正式上线前，以面板定价页显示为准，确认输入、输出和缓存命中的当前价格。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "读取接入文档",
+          "text": "已知材料未提供请求地址、鉴权方式和请求字段。请以中转站面板提供的 API 文档配置 Base URL、密钥和模型名。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "从小流量验证",
+          "text": "先用固定提示词做小流量调用，记录输入 token、输出 token、缓存命中、首字延迟和错误率。"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "按实际账单复核",
+          "text": "根据实际账单与调用日志核对分组倍率和 token 用量，再决定是否扩大到生产流量。"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://a37836323.github.io/claude-opus-5-api/#application",
+      "name": "OpenLux API",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://api.openlux.ai",
+      "description": "了解 claude-opus-5 API 中转站的基准价格、分组倍率与接入前需确认的信息。输入基准价为 $5/100 万 token，输出基准价为 $25/100 万 token。",
+      "offers": {
+        "@type": "Offer",
+        "price": "待实测",
+        "priceCurrency": "CNY",
+        "url": "https://api.openlux.ai",
+        "description": "人民币购买金额与支付方式未提供。已知美元基准价为输入 $5、输出 $25、缓存命中 $0.5，单位均为每 100 万 token；最终费用按账户分组倍率计算。"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://a37836323.github.io/claude-opus-5-api/quickstart/#article",
+      "headline": "claude-opus-5 API 在国内怎么接入？",
+      "datePublished": "2026-10-31",
+      "dateModified": "2026-11-01",
+      "inLanguage": "zh-CN",
+      "author": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "mainEntityOfPage": "https://a37836323.github.io/claude-opus-5-api/quickstart/"
+    }
+  ]
+}
+</script>
+<style>*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#fffdfa;color:#1f1c19;font-family:system-ui,"Noto Sans SC","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility}
+.slot-box27{max-width:940px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:1.85rem;line-height:1.4;margin:.2em 0 .6em;letter-spacing:-.01em}
+h2{font-size:1.3rem;margin:2.2em 0 .7em;padding-bottom:.35em;
+border-bottom:2px solid #fde68a}
+h3{font-size:1.08rem;margin:1.6em 0 .5em}
+a{color:#b45309;text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+code{background:#fffbeb;padding:.15em .4em;border-radius:2px;
+font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:#fffbeb;border:1px solid #fde68a;border-radius:4px;
+padding:16px;overflow-x:auto;font-size:.86rem;line-height:1.6}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.94rem}
+th,td{border:1px solid #fde68a;padding:10px 12px;text-align:left}
+th{background:#fffbeb;font-weight:600}
+ul,ol{padding-left:1.5em}
+ul{list-style-type:disc}
+li{margin:.4em 0}
+.note-card51{background:#fffbeb;border-left:3px solid #b45309;
+border-radius:0 4px 4px 0;padding:14px 18px;margin:1.4em 0}
+.area-stack76{display:inline-block;background:#b45309;color:#fff;
+padding:12px 26px;border-radius:4px;font-weight:600;margin:.6em 0}
+.area-stack76:hover{opacity:.88;text-decoration:none}
+.row-card27{color:#71717a;font-size:.86rem;margin-top:3em;
+padding-top:1.2em;border-top:1px solid #fde68a}
+.shell-card91{border:1px solid #fde68a;border-radius:4px;
+padding:2px 18px;margin:.8em 0}
+.layer-area87{overflow-x:auto}
+@media(max-width:600px){
+  body{font-size:15px}
+  h1{font-size:1.5rem}
+  h2{font-size:1.18rem}
+  .slot-box27{padding:20px 16px 48px}
+  table{font-size:.85rem}
+  th,td{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}</style>
+</head>
+<body>
+<main class="slot-box27">
+<p data-notice="price-20261025" style="margin:0 0 16px;padding:10px 14px;border:1px solid #f0c36d;background:#fff8e6;color:#5c4400;border-radius:6px;font-size:14px;line-height:1.6">本页价格与模型信息可能已有变化，请以官网为准：<a href="https://www.openlux.ai/pricing?utm_source=claude-opus-5-api&amp;utm_medium=satellite&amp;utm_campaign=price_notice" style="color:#0b57d0">OpenLux 官网价格页</a></p>
+<p class="frame-deck91"><a href="https://a37836323.github.io/claude-opus-5-api/">首页</a> ／ claude-opus-5</p>
+<h1>claude-opus-5 API 在国内怎么接入？</h1>
+
+<div>
+<h2>claude-opus-5 API 在国内怎么调用？</h2>
+<p>使用兼容客户端时，配置 <code>base_url</code>、<code>api_key</code> 和模型名，并逐项核对接口与参数兼容性。</p>
+<ol>
+<li><strong>确认账户分组</strong>：先在面板确认账户所在分组及其倍率。claude-opus-5 的最终单价不是固定展示价，而是基准价乘以分组倍率。</li>
+<li><strong>核对实时定价</strong>：在充值或正式上线前，以面板定价页显示为准，确认输入、输出和缓存命中的当前价格。</li>
+<li><strong>读取接入文档</strong>：已知材料未提供请求地址、鉴权方式和请求字段。请以中转站面板提供的 API 文档配置 Base URL、密钥和模型名。</li>
+<li><strong>从小流量验证</strong>：先用固定提示词做小流量调用，记录输入 token、输出 token、缓存命中、首字延迟和错误率。</li>
+<li><strong>按实际账单复核</strong>：根据实际账单与调用日志核对分组倍率和 token 用量，再决定是否扩大到生产流量。</li>
+</ol>
+<h3>完整代码示例</h3>
+<pre><code class="language-python">from decimal import Decimal
+
+# 已知：claude-opus-5 的基准价，单位为美元 / 100 万 token
+INPUT_BASE = Decimal(&#x27;5&#x27;)
+OUTPUT_BASE = Decimal(&#x27;25&#x27;)
+CACHE_HIT_BASE = Decimal(&#x27;0.5&#x27;)
+
+# 请替换为面板中显示的账户分组倍率，例如 1.1 或 0.44118
+GROUP_MULTIPLIER = Decimal(&#x27;待填写&#x27;)
+
+def unit_price(base_price: Decimal, multiplier: Decimal) -&gt; Decimal:
+    return base_price * multiplier
+
+if __name__ == &#x27;__main__&#x27;:
+    if GROUP_MULTIPLIER == Decimal(&#x27;待填写&#x27;):
+        raise SystemExit(&#x27;请先从面板填写账户分组倍率，再计算实际单价。&#x27;)
+
+    print(&#x27;输入：$&#x27;, unit_price(INPUT_BASE, GROUP_MULTIPLIER), &#x27;/ 100 万 token&#x27;)
+    print(&#x27;输出：$&#x27;, unit_price(OUTPUT_BASE, GROUP_MULTIPLIER), &#x27;/ 100 万 token&#x27;)
+    print(&#x27;缓存命中：$&#x27;, unit_price(CACHE_HIT_BASE, GROUP_MULTIPLIER), &#x27;/ 100 万 token&#x27;)
+</code></pre>
+<p><a href="https://api.openlux.ai/register?channel=c_13my67uw" rel="nofollow noopener" data-cta="link">claude-opus-5 API 中转站</a></p>
+</div>
+<div>
+<h2>这个站还有这些内容</h2>
+<ul class="area-col77">
+<li><a href="https://a37836323.github.io/claude-opus-5-api/pricing/">claude-opus-5 API 多少钱？各版本价格与计费方式</a><span>各版本基准价、计费口径与倍率算法</span></li>
+<li><a href="https://a37836323.github.io/claude-opus-5-api/compare/">claude-opus-5 用官方直连还是中转？逐项对比</a><span>逐项对比，含中转方案的局限</span></li>
+<li><a href="https://a37836323.github.io/claude-opus-5-api/faq/">claude-opus-5 API 常见问题</a><span>接入时最常遇到的问题</span></li>
+</ul>
+</div>
+<div>
+<h2>开始使用</h2>
+<p>先在面板确认分组倍率与实时价格，再进行小流量调用验证</p>
+<p><a class="area-stack76" href="https://api.openlux.ai/register?channel=c_13my67uw" rel="nofollow noopener" data-cta="register-bottom">注册后创建 API Key</a></p>
+<p>账号入口：<a href="https://api.openlux.ai/register?channel=c_13my67uw" rel="nofollow noopener" data-cta="link">OpenLux</a></p>
+</div>
+<p class="row-card27">最后更新：2026年11月01日　|　本页由 OpenLux 编写并维护。<br>价格资料以文中标注的数据来源和查询日期为准；未完成的性能测试不作为承诺。实际可用性与计费以控制台为准。</p>
+</main>
+<script>
+(function(){
+  try{
+    var EP='https://tk.openlux.ai/collect',S='claude-opus-5-api',L='zh-CN',V=1;
+    var sid=Math.random().toString(36).slice(2)+Date.now().toString(36);
+    function send(type,extra){
+      try{
+        var p={v:V,t:type,s:S,l:L,sid:sid,
+               r:document.referrer||'',
+               p:location.pathname||'/',
+               q:location.search||'',
+               sw:screen.width||0,
+               tz:(Intl.DateTimeFormat().resolvedOptions()||{}).timeZone||''};
+        for(var k in extra){p[k]=extra[k];}
+        var body=JSON.stringify(p);
+        if(navigator.sendBeacon){
+          navigator.sendBeacon(EP,new Blob([body],{type:'text/plain;charset=UTF-8'}));
+        }else{
+          fetch(EP,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
+        }
+      }catch(e){}
+    }
+    if(document.visibilityState==='prerender'){
+      document.addEventListener('visibilitychange',function h(){
+        if(document.visibilityState!=='prerender'){
+          document.removeEventListener('visibilitychange',h);send('view');
+        }
+      });
+    }else{
+      send('view');
+    }
+    document.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a[data-cta]'):null;
+      if(!a)return;
+      send('click',{c:a.getAttribute('data-cta')||'',h:a.href||''});
+    },{capture:true,passive:true});
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
