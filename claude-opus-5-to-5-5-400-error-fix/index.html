@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>claude-opus-5 to claude-opus-5-5 Returns 400? Fix thinking, tool_choice and Computer Use</title>
+<meta name="description" content="Anthropic now lists Claude Opus 5 as a legacy model. Requests that work on claude-opus-5 can return 400 on claude-opus-5-5: thinking disabled, budget_tokens, forced tool_choice and computer_20251124. Here is each error message, the fix, and how to verify.">
+<meta name="keywords" content="Claude Opus 5 API, claude-opus-5, Claude API pricing, Anthropic API, AI model API, API token pricing, Claude model routing, OpenLux API">
+<link rel="canonical" href="https://claude-opus-5-api.pages.dev/claude-opus-5-to-5-5-400-error-fix/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="claude-opus-5 to claude-opus-5-5 Returns 400? Fix thinking, tool_choice and Computer Use">
+<meta property="og:description" content="Anthropic now lists Claude Opus 5 as a legacy model. Requests that work on claude-opus-5 can return 400 on claude-opus-5-5: thinking disabled, budget_tokens, forced tool_choice and computer_20251124. Here is each error message, the fix, and how to verify.">
+<meta property="og:url" content="https://api.openlux.ai/">
+<meta property="og:site_name" content="OpenLux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="claude-opus-5 to claude-opus-5-5 Returns 400? Fix thinking, tool_choice and Computer Use">
+<meta name="twitter:description" content="Anthropic now lists Claude Opus 5 as a legacy model. Requests that work on claude-opus-5 can return 400 on claude-opus-5-5: thinking disabled, budget_tokens, forced tool_choice and computer_20251124. Here is each error message, the fix, and how to verify.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://api.openlux.ai/#organization",
+      "name": "OpenLux",
+      "url": "https://api.openlux.ai",
+      "description": "Claude Opus 5 API pricing details for 2026: $5 input and $25 output per 1M tokens before the account-group multiplier.",
+      "sameAs": [
+        "https://openlux.ai",
+        "https://doc.openlux.ai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://claude-opus-5-api.pages.dev/#website",
+      "url": "https://claude-opus-5-api.pages.dev",
+      "name": "Claude Opus 5 API: Pricing and Model Details (2026)",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://claude-opus-5-api.pages.dev/claude-opus-5-to-5-5-400-error-fix/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OpenLux",
+          "item": "https://api.openlux.ai"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Claude Opus 5 API",
+          "item": "https://claude-opus-5-api.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Switched claude-opus-5 to claude-opus-5-5 and got a 400? Check thinking, tool_choice and computer use first",
+          "item": "https://claude-opus-5-api.pages.dev/claude-opus-5-to-5-5-400-error-fix/"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://claude-opus-5-api.pages.dev/#application",
+      "name": "OpenLux API",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "url": "https://api.openlux.ai",
+      "description": "Claude Opus 5 API pricing details for 2026: $5 input and $25 output per 1M tokens before the account-group multiplier.",
+      "offers": {
+        "@type": "Offer",
+        "price": "Not yet measured",
+        "priceCurrency": "CNY",
+        "url": "https://api.openlux.ai",
+        "description": "Usage is priced from the model's base token rates multiplied by the user's account-group multiplier; account funding and billing details are not provided in the supplied data."
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://claude-opus-5-api.pages.dev/claude-opus-5-to-5-5-400-error-fix/#article",
+      "headline": "Switched claude-opus-5 to claude-opus-5-5 and got a 400? Check thinking, tool_choice and computer use first",
+      "datePublished": "2026-08-04",
+      "dateModified": "2026-10-30",
+      "inLanguage": "en-US",
+      "author": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "publisher": {
+        "@id": "https://api.openlux.ai/#organization"
+      },
+      "mainEntityOfPage": "https://claude-opus-5-api.pages.dev/claude-opus-5-to-5-5-400-error-fix/"
+    }
+  ]
+}
+</script>
+<style>*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#ffffff;color:#18181b;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased;
+text-rendering:optimizeLegibility}
+.block-note93{max-width:900px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:1.85rem;line-height:1.4;margin:.2em 0 .6em;letter-spacing:-.01em}
+h2{font-size:1.3rem;margin:2.2em 0 .7em;padding-bottom:.35em;
+border-bottom:2px solid #f5d0fe}
+h3{font-size:1.08rem;margin:1.6em 0 .5em}
+a{color:#c026d3;text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+code{background:#fdf4ff;padding:.15em .4em;border-radius:6px;
+font-size:.9em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:#fdf4ff;border:1px solid #f5d0fe;border-radius:10px;
+padding:16px;overflow-x:auto;font-size:.86rem;line-height:1.6}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.94rem}
+th,td{border:1px solid #f5d0fe;padding:10px 12px;text-align:left}
+th{background:#fdf4ff;font-weight:600}
+ul,ol{padding-left:1.5em}
+ul{list-style-type:disc}
+li{margin:.4em 0}
+.zone-wrap48{background:#fdf4ff;border-left:3px solid #c026d3;
+border-radius:0 10px 10px 0;padding:14px 18px;margin:1.4em 0}
+.wrap-layer35{display:inline-block;background:#c026d3;color:#fff;
+padding:12px 26px;border-radius:10px;font-weight:600;margin:.6em 0}
+.wrap-layer35:hover{opacity:.88;text-decoration:none}
+.frame-body78{color:#71717a;font-size:.86rem;margin-top:3em;
+padding-top:1.2em;border-top:1px solid #f5d0fe}
+.pane-panel61{border:1px solid #f5d0fe;border-radius:10px;
+padding:2px 18px;margin:.8em 0}
+.slot-layer43{overflow-x:auto}
+@media(max-width:600px){
+  body{font-size:15px}
+  h1{font-size:1.5rem}
+  h2{font-size:1.18rem}
+  .block-note93{padding:20px 16px 48px}
+  table{font-size:.85rem}
+  th,td{padding:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}</style>
+</head>
+<body>
+<main class="block-note93">
+<p data-notice="price-20261025" style="margin:0 0 16px;padding:10px 14px;border:1px solid #f0c36d;background:#fff8e6;color:#5c4400;border-radius:6px;font-size:14px;line-height:1.6">Prices and model details on this page may have changed. For current rates, see the <a href="https://www.openlux.ai/pricing?utm_source=claude-opus-5-api&amp;utm_medium=satellite&amp;utm_campaign=price_notice" style="color:#0b57d0">OpenLux pricing page</a>.</p>
+<p class="pane-block72"><a href="https://claude-opus-5-api.pages.dev/">Home</a> ／ claude-opus-5</p>
+<h1>Switched claude-opus-5 to claude-opus-5-5 and got a 400? Check thinking, tool_choice and computer use first</h1>
+<p>If you changed the model name from claude-opus-5 to claude-opus-5-5 and the request now fails with a 400, check three things first: whether the request sets thinking to disabled or enabled with budget_tokens, whether tool_choice is any or tool, and whether you declare the computer_20251124 computer use tool. Anthropic&#x27;s Claude Opus 5 page now marks the model as legacy, and the official Claude Opus 5.5 migration guide has a dedicated section for moving from Claude Opus 5. This page walks through each 400 error message from that guide, the code change, the response changes that do not raise an error, and how to confirm the migration works.</p>
+
+<section>
+<h2>Why does a working claude-opus-5 request return 400 on claude-opus-5-5?</h2>
+<p>Anthropic&#x27;s Claude Opus 5 model page lists the model as Active (legacy): it was released on July 24, 2026, it is still available, and its retirement is not sooner than July 24, 2027. The page suggests considering a move to Claude Opus 5.5. So you can keep calling claude-opus-5 for now. Upgrading is optional, but if you do upgrade, changing only the model name is often not enough.</p>
+<p>The migration guide says that for a team on Claude Opus 5, the first group of its checklist is the whole list. The request settings in that group that claude-opus-5-5 rejects with a 400 error are: thinking set to disabled, thinking set to enabled with a manual budget_tokens value, tool_choice of type any or tool, and the computer_20251124 computer use tool on the Claude API and on Claude Models on Google Cloud (Google managed).</p>
+<p>The guide also says claude-opus-5-5 rejects temperature, top_p and top_k, and a final prefilled assistant turn. Its checklist files those two items under Claude Opus 4.6 and Claude Opus 4.5 or earlier, so code that already runs on claude-opus-5 normally does not rely on them. If your request still sends any of them, even at default values, remove them as well.</p>
+<p>Official sources: Claude Opus 5 overview https://platform.claude.com/docs/en/models/opus-5/overview , Claude Opus 5.5 migration guide https://platform.claude.com/docs/en/models/opus-5-5/migration-guide , model deprecations https://platform.claude.com/docs/en/about-claude/model-deprecations .</p>
+<h2>&quot;thinking.type.disabled&quot; is not supported for this model: remove thinking and set effort</h2>
+<p>Claude Opus 5 accepts thinking: {&quot;type&quot;: &quot;disabled&quot;}. On Claude Opus 5.5, adaptive thinking is always on, and the API returns a 400 with &quot;thinking.type.disabled&quot; is not supported for this model. or &quot;thinking.type.enabled&quot; is not supported for this model. when the request disables thinking or sets a budget_tokens value.</p>
+<p>The fix from the guide: send no thinking field, or send thinking: {&quot;type&quot;: &quot;adaptive&quot;}, which is equivalent. Control how much the model thinks with output_config.effort, the only request parameter that controls thinking depth on this model. All five levels are supported: low, medium, high, xhigh and max. Where you disabled thinking to save tokens, pick a lower effort; the official before-and-after example uses effort low.</p>
+<p>The default changed too. Claude Opus 5 defaults to effort high, while Claude Opus 5.5 defaults to medium, so a request that omits effort now runs at medium. The guide recommends setting effort explicitly and re-running an effort sweep on your own evaluations instead of carrying over a setting tuned for Claude Opus 5.</p>
+<p>Revisit max_tokens. It remains a hard limit on total output, thinking plus response text, and thinking tokens are billed as output tokens even when the thinking text is not returned to you. If your code previously disabled thinking, a request can now produce more output tokens. At xhigh or max effort the guide suggests starting max_tokens at 64k.</p>
+<h2>tool_choice: type &quot;tool&quot; and &quot;any&quot; are not supported: switch to auto with strict tools</h2>
+<p>On claude-opus-5-5, tool_choice values {&quot;type&quot;: &quot;any&quot;} and {&quot;type&quot;: &quot;tool&quot;, &quot;name&quot;: &quot;...&quot;} return a 400 with the message tool_choice: type &quot;tool&quot; and &quot;any&quot; are not supported for this model. The token counting endpoint rejects them as well. Only {&quot;type&quot;: &quot;auto&quot;}, the default, and {&quot;type&quot;: &quot;none&quot;} are accepted.</p>
+<p>The official fix is to use tool_choice auto together with strict tool use or structured outputs, and to say in the prompt when the tool applies. In the guide&#x27;s example, the tool definition gets strict: true and the user message adds Use the get_weather tool. Because auto lets the model answer without calling a tool, that prompt instruction matters.</p>
+<p>Strict tool use accepts only a subset of JSON Schema. Check each tool&#x27;s input_schema before adding strict: true; every object in the schema must set additionalProperties: false. Official reference: https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use .</p>
+<h2>does not support tool types: computer_20251124: move to computer_toolset_20260801</h2>
+<p>On the Claude API and Claude Models on Google Cloud (Google managed), a tools entry of type computer_20251124 returns a 400 with &#x27;claude-opus-5-5&#x27; does not support tool types: computer_20251124., followed by the tool types the model accepts.</p>
+<p>Declare the toolset instead: send a tools entry of type computer_toolset_20260801 with no name and no display dimensions, and drop the computer-use-2025-11-24 beta header. The agent loop also changes: handle member tool_use blocks, where the action is the block&#x27;s name rather than input.action; expect several of them in one turn; and echo toolset_name on every tool result. The full list is in the computer use tool documentation under Migrate from computer_20251124: https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool .</p>
+<p>On Amazon Bedrock, the guide says computer_20251124 keeps working on Claude Opus 5.5 as it does on Claude Opus 5, so no change is needed there. For other platforms, check the Compatibility section of the computer use tool page.</p>
+<h2>No 400, but the output looks different: response changes to handle</h2>
+<p>Responses start with thinking blocks. A response can contain one or more thinking blocks before the first text block. Code that reads content[0].text, or a stream handler that treats the first content_block_start event as text, breaks. Select blocks by their type field and branch on block type in stream handling.</p>
+<p>Pass thinking blocks back unchanged. In a tool-use loop, return the assistant message as received, including thinking blocks whose thinking field is empty. The API rejects edited, reordered or partially dropped thinking blocks with a 400. Keep the conversation append-only: for accounts created on or after August 31, 2026, 00:00 UTC, replaying a thinking block after editing the system prompt, tools or earlier messages returns a 400 by default. See Preserved thinking in the official docs if you must change instructions mid-conversation.</p>
+<p>Thinking text and progress notes are hidden by default. thinking.display defaults to omitted, so thinking blocks arrive with an empty thinking field. On Claude Opus 5, text written between tool calls came back as text blocks; on Claude Opus 5.5 it comes back as progress-update thinking blocks, at most one before each tool call. No request fails, but an interface that showed that text goes quiet. Set display to summarized, or to updates (beta, header thinking-display-updates-2026-08-18), and render each non-empty thinking block ahead of the tool_use block it precedes.</p>
+<p>Refusals and routing. Claude Opus 5.5 can return stop_reason refusal with a stop_details category, and its classifiers cover more categories than Claude Opus 5, such as bio in addition to cyber and reasoning_extraction. Handle that stop reason and configure a fallback. If a router can move a conversation from Claude Opus 5.5 to another model, that model runs without Claude Opus 5.5&#x27;s thinking blocks; Claude Fable 5.1 and Claude Mythos 5.1 on the Claude API are the exception. In the other direction, Claude Opus 5.5 does read thinking blocks produced by Claude Opus 5.</p>
+<h2>How to verify the migration worked</h2>
+<p>Step 1, send a minimal request: model claude-opus-5-5, a max_tokens value, output_config with an explicit effort, no thinking field, no forced tool_choice, no temperature, top_p, top_k or prefill. Success means an HTTP 200 response in which you find the text block by its type, not by position.</p>
+<p>Step 2, add your features back one at a time: tools with tool_choice auto and strict: true, the computer_toolset_20260801 toolset if you use computer use, and display summarized or updates if your interface shows progress text. After each addition, confirm the request still returns 200 and that tool inputs match your schema.</p>
+<p>Step 3, if a 400 remains, read the error message in the response body and match it to the sections above: thinking.type.disabled or thinking.type.enabled points to the thinking setting, the tool_choice message points to forced tool use, and does not support tool types points to the computer use tool version. The guide also notes that Claude Code can apply the changes with /claude-api migrate this project to claude-opus-5-5; review the result against the checklist afterwards.</p>
+<p>Calling through this relay: the platform pricing API lists both claude-opus-5 and claude-opus-5-5 as available, with anthropic and openai endpoint types. For the Anthropic Messages protocol, set the base URL to https://api.openlux.ai without /v1; the client appends /v1/messages. Whether fields such as thinking, tool_choice and output_config pass through the relay unchanged should be confirmed from the actual response, so test with a small request before moving production traffic. For the price difference between the two models, check the official pricing page.</p>
+<p>Still stuck? Full documentation and support are at <a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="docs">learn more</a>.</p>
+</section>
+<section>
+<h2>More on this site</h2>
+<ul class="wrap-box45">
+<li><a href="https://claude-opus-5-api.pages.dev/quickstart/">How do you call the claude-opus-5 API?</a><span>Setup steps and copy-pasteable code</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/compare/">claude-opus-5: direct API or gateway?</a><span>Point-by-point, including the limitations</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/faq/">claude-opus-5 API — frequently asked questions</a><span>What people actually ask when integrating</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-api-buy/">Where to Purchase Claude Opus 5 API Access and What It Costs</a><span>Purchase and billing details</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-payment-methods/">Can You Pay for Claude Opus 5 API Without an International Card?</a><span>Payment options and funding status</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/api-relay-station-explained/">API Relay Stations: What They Do Between Your App and claude-opus-5</a><span>How API relays work</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-code-relay-setup/">How to verify a Claude Code relay setup for claude-opus-5</a><span>Claude Code relay setup</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/opus-5-cost-comparison/">What Does claude-opus-5 Cost Compared With Nearby Models in 2026?</a><span>Opus 5 cost breakdown</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-api-ban-risk/">Does Using claude-opus-5 Through an API or Relay Risk an Account Ban?</a><span>Ban risk and relay safety</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-free-trial/">Can You Try the Claude Opus 5 API for Free?</a><span>Claude Opus 5 free trial facts</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/organization-disabled-error/">How to investigate &quot;api error 400 this organization has been disabled&quot;</a><span>Disabled organization error guide</span></li>
+<li><a href="https://claude-opus-5-api.pages.dev/claude-opus-5-thinking-disabled-400-fix/">claude-opus-5 400 error after turning thinking off: what the API accepts and how to fix it</a><span>Opus 5 thinking-off 400 fix</span></li>
+</ul>
+</section>
+<section>
+<h2>Get started</h2>
+<p>Check the live pricing response and validate `claude-opus-5` in your environment</p>
+<p><a class="wrap-layer35" href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="register-bottom">Get a free API key</a></p>
+<p>Official site: <a href="https://api.openlux.ai/register?channel=c_lkv0gzwj" rel="nofollow noopener" data-cta="link">see the docs</a></p>
+</section>
+<p class="frame-body78">Last updated 2026-10-30　|　Written and maintained by OpenLux.<br>Latency and pricing figures come from our own measurements. Where they differ from the vendor's site, the vendor's live page wins.</p>
+</main>
+<script>
+(function(){
+  try{
+    var EP='https://tk.openlux.ai/collect',S='claude-opus-5-api',L='en-US',V=1;
+    var sid=Math.random().toString(36).slice(2)+Date.now().toString(36);
+    function send(type,extra){
+      try{
+        var p={v:V,t:type,s:S,l:L,sid:sid,
+               r:document.referrer||'',
+               p:location.pathname||'/',
+               q:location.search||'',
+               sw:screen.width||0,
+               tz:(Intl.DateTimeFormat().resolvedOptions()||{}).timeZone||''};
+        for(var k in extra){p[k]=extra[k];}
+        var body=JSON.stringify(p);
+        if(navigator.sendBeacon){
+          navigator.sendBeacon(EP,new Blob([body],{type:'text/plain;charset=UTF-8'}));
+        }else{
+          fetch(EP,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
+        }
+      }catch(e){}
+    }
+    if(document.visibilityState==='prerender'){
+      document.addEventListener('visibilitychange',function h(){
+        if(document.visibilityState!=='prerender'){
+          document.removeEventListener('visibilitychange',h);send('view');
+        }
+      });
+    }else{
+      send('view');
+    }
+    document.addEventListener('click',function(e){
+      var a=e.target&&e.target.closest?e.target.closest('a[data-cta]'):null;
+      if(!a)return;
+      send('click',{c:a.getAttribute('data-cta')||'',h:a.href||''});
+    },{capture:true,passive:true});
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
